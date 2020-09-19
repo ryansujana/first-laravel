@@ -3,12 +3,12 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-10 title">
-			<h1><i class="fa fa-bars"></i>Admin DASHBOARD</h1>
+			<h1><i class="fa fa-bars"></i>Admin Galuh DASHBOARD</h1>
 		</div>
 
 		<div class="col-sm-12">
 			<div class="content">
-				<h2>Welcome to Dashboard</h2>
+				<h2>Welcome to Admin Galuh Dashboard</h2>
 				<p class="welcome-text">We,ve assembled some links for you to get started.</p>
 				<div class="row">
 					<div class="col-sm-4 quick-links">

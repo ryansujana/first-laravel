@@ -3,7 +3,7 @@
 <head>
   <meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ADMIN DASHBOARD | DISKOMINFO SUBANG</title>
+	<title>ADMIN DASHBOARD | GALUH PAKUAN</title>
   <link rel="icon" href="{{asset('images/logdis.png')}}" type="image/png">
 	<link rel="stylesheet" type="text/css" href="{{url('css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url('css/font-awesome.min.css')}}">
