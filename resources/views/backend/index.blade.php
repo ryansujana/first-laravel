@@ -3,7 +3,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-10 title">
-			<h1><i class="fa fa-bars"></i> DASHBOARD</h1>
+			<h1><i class="fa fa-bars"></i>Admin DASHBOARD</h1>
 		</div>
 
 		<div class="col-sm-12">
