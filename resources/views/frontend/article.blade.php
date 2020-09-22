@@ -2,8 +2,7 @@
 @section ('title')
 <title>{{$data->title}} | DISKOMINFO</title>
 @stop
-@section ('content')
-<div id="fb-root"></div>
+@section('content')
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v7.0" nonce="4SLnVn2i"></script>
 <script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -21,74 +20,149 @@
 
   return t;
 }(document, "script", "twitter-wjs"));</script> 
-	<div class="wrapper">
-		<div class="row" style="margin-top:30px;">
-			<div class="col-md-8">
-				<div class="col-md-12" style="padding:15px 15px 30px 0px;">				
-					<div class="col-md-12">
-						<div class="text-right view-count">
-							<h3>
-								<i class="fa fa-calendar"></i>
-								{{ $data->created_at }}
-								<i class="fa fa-eye"></i>
-								{{ $data->views + 1 }}
-								@if($data->views !=0)
-								Views 
-								@else
-								View
-								@endif
-							</h3>
-						</div>
-						<h1><a href="#"></a>{{$data->title}}</h1>
-						<img src="{{url('posts')}}/{{$data->image}}" width="100%" style="margin-bottom:15px;" />
-						{!! $data->description !!}
-					</div>	
-					<div class="col-md-12 share-this">
-						<h4>Share this..</h4>
-						<div class="col-md-12">
-							<div class="fb-share-button" data-href="{{url('article')}}/{{$data->slug}}" data-layout="button" data-size="small"></div>
-							<span class="tweet-btn">
-							<a class="twitter-share-button" href="{{url('article')}}/{{$data->slug}}" data-size="small">
-							Tweet</a>
-							</span>
-							<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-							<script type="IN/Share" data-url="{{url('article')}}/{{$data->slug}}"></script>
-						</div>
-					</div>
-						<div class="col-md-12 also-like">
-							<h3>You May Also Like</h3>
-						</div>
-						@foreach($related->take(3) as $r)			
-						<div class="col-md-4">
-							<a href="{{url('article')}}/{{$r->slug}}"><img src="{{url('posts')}}/{{$r->image}}" width="100%" style="margin-bottom:15px; height: 130px;" /></a>
-							<h4><a href="{{url('article')}}/{{$r->slug}}">{{$r->title}}</a></h4>
-						</div>
-						@endforeach
-				</div>        
-			</div>
+        <section class="section single-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="blog-title-area text-center">
+                                <h3>{{$data->title}}</h3>
 
-<!-- right section -->
-			<div class="col-md-4">
-				<div class="col-md-12" style="padding:15px;">
-					<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">LATEST NEWS</span></h3>
-					@foreach($latest->take(10) as $l)
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<a href="{{url('article')}}/{{$l->slug}}"><img src="{{url('posts')}}/{{$l->image}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4><a href="{{url('article')}}/{{$l->slug}}">{{$l->title}}</a></h4>
-							</div>
-						</div>
-					</div>
-					@endforeach
-				</div> 
-			</div>
-		</div> 
-	</div>
+                                <div class="blog-meta big-meta" style="font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;">
+                                    <i class="fa fa-calendar"></i>
+                                    <small>{{ $data->created_at }}</small>
+                                    <small>  /  </small>
+                                    <small><i class="fa fa-eye"></i> {{ $data->views + 1 }}
+                                @if($data->views !=0)
+                                Views 
+                                @else
+                                View
+                                @endif</small>
+                                </div><!-- end meta -->
 
+                                <div class="post-sharing">
+                                    <ul class="list-inline">
+                                        <div class="fb-share-button" data-href="{{url('article')}}/{{$data->slug}}" data-layout="button" data-size="small"></div>
+                                    <span class="tweet-btn">
+                                    <a class="twitter-share-button" href="{{url('article')}}/{{$data->slug}}" data-size="small">
+                                    Tweet</a>
+                                    </ul>
+                                </div><!-- end post-sharing -->
+                            </div><!-- end title -->
 
+                            <div class="single-post-media">
+                                <img src="{{url('posts')}}/{{$data->image}}" alt="" class="img-fluid">
+                            </div><!-- end media -->
+
+                            <div class="blog-content">  
+                                <div class="pp">
+                                    <p>{!! $data->description !!}</p>
+
+                                </div><!-- end pp -->
+                            </div><!-- end content -->
+
+                            <div class="blog-title-area">
+
+                                <div class="post-sharing">
+                                    <ul class="list-inline">
+                                        <ul class="list-inline">
+                                        <div class="fb-share-button" data-href="{{url('article')}}/{{$data->slug}}" data-layout="button" data-size="small"></div>
+                                        <span class="tweet-btn">
+                                        <a class="twitter-share-button" href="{{url('article')}}/{{$data->slug}}" data-size="small">
+                                        Tweet</a>
+                                        </ul>
+                                    </ul>
+                                </div><!-- end post-sharing -->
+                            </div><!-- end title -->
+
+                            <hr class="invis1">
+
+                            <div class="custombox clearfix">
+                                <h4 class="small-title">You may also like</h4>
+                                <div class="row">
+                                    @foreach($related->take(2) as $r)
+                                    <div class="col-lg-6">
+                                        <div class="blog-box">
+                                            <div class="post-media">
+                                                <a href="{{url('article')}}/{{$r->slug}}" title="">
+                                                    <img src="{{url('posts')}}/{{$r->image}}" alt="" class="img-fluid" style=" height: 190px;">
+                                                    <div class="hovereffect">
+                                                        <span class=""></span>
+                                                    </div><!-- end hover -->
+                                                </a>
+                                            </div><!-- end media -->
+                                            <div class="blog-meta">
+                                                <h4><a href="{{url('article')}}/{{$r->slug}}" title="">{{$r->title}}</a></h4>
+                                                <small><a href="blog-category-01.html" title="">{{$r->created_at}}</a></small>
+                                            </div><!-- end meta -->
+                                        </div><!-- end blog-box -->
+                                    </div><!-- end col -->
+                                    @endforeach
+                                </div><!-- end row -->
+                            </div><!-- end custom-box -->
+
+                            <hr class="invis1">
+                        </div><!-- end page-wrapper -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+
+                            <div class="widget">
+                                <h2 class="widget-title">Sering Dikunjungi</h2>
+                                <div class="blog-list-widget">
+                                    @foreach($populars->take(7) as $popular)
+                                    <div class="list-group">
+                                        <a href="{{url('article')}}/{{$popular->slug}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="{{url('posts')}}/{{$popular->image}}" alt="" class="img-fluid float-left" style="width: 100%;">
+                                                <h5 class="mb-1">{{$popular->title}}</h5>
+                                                <i class="fa fa-calendar"></i>
+                                                <small>{{$popular->created_at}}  / </small>
+                                                <i class="fa fa-eye"></i>
+                                                <small>{{ $popular->views + 1 }}
+                                                @if($popular->views !=0)
+                                                Views 
+                                                @else
+                                                View
+                                                @endif
+                                            </small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @endforeach
+                                </div><!-- end blog-list -->
+                            </div><!-- end widget -->
+
+                            <div class="widget">
+                                <h2 class="widget-title">Berita Terbaru</h2>
+                                <div class="blog-list-widget">
+                                    @foreach($latest->take(7) as $last)
+                                    <div class="list-group">
+                                        <a href="{{url('article')}}/{{$last->slug}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="w-100 justify-content-between">
+                                                <img src="{{url('posts')}}/{{$last->image}}" alt="" class="img-fluid float-left" style="width: 100%;">
+                                                <h5 class="mb-1">{{$last->title}}</h5>
+                                                <i class="fa fa-calendar"></i>
+                                                <small>{{$last->created_at}}  / </small>
+                                                <i class="fa fa-eye"></i>
+                                                <small>{{ $last->views + 1 }}
+                                                @if($last->views !=0)
+                                                Views 
+                                                @else
+                                                View
+                                                @endif
+                                            </small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @endforeach
+                                </div><!-- end blog-list -->
+                            </div><!-- end widget -->
+
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
 @stop

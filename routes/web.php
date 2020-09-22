@@ -30,8 +30,20 @@ Route::post('addcategory', 'crudController@insertData');
 Route::get('editcategory/{id}','adminController@editCategory');
 Route::post('updatecategory/{id}', 'crudController@updateData');
 Route::post('multipledelete','adminController@multipledelete');
+//category_inf
+Route::get('viewcategoryinf', 'adminController@viewcategoryinf');
+Route::post('addcategoryinf', 'crudController@insertData');
+Route::get('editcategoryinf/{id}', 'adminController@editCategoryinf');
+Route::post('updatecategoryinf/{id}', 'crudController@updateData');
+//desa
+Route::get('add-desa', 'adminController@addDesa');
+Route::post('adddesa', 'crudController@insertData');
+Route::get('all-desa', 'adminController@allDesa');
+Route::get('editdesa/{id}', 'adminController@editDesa');
+Route::post('updatedesa/{id}', 'crudController@updateData');
+Route::get('deletedesa/{id}', 'adminController@deleteDesa');
 //settings
-Route::get('settings','adminController@settings');
+Route::get('setting','adminController@settings');
 Route::post('addsettings','crudController@insertData');
 Route::post('updatesettings/{id}','crudController@updateData');
 //post

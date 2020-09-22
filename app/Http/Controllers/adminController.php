@@ -37,6 +37,20 @@ class adminController extends Controller
     	return view ('backend.categories.editcategory', ['data'=>$data, 'singledata'=>$singledata]);
     }
 
+    public function viewcategoryinf(){
+        $data = DB::table('category_infs')->get();
+        return view('backend.categories_inf.category-inf', ['data'=>$data]);
+    }
+
+    public function editCategoryinf($id){
+        $singledata = DB::table('category_infs')->where('cinid',$id)->first();
+        if($singledata == NULL){
+            return redirect ('viewcategoryinf');
+        }
+        $data = DB::table('category_infs')->get();
+        return view ('backend.categories_inf.editcategory-inf', ['data'=>$data, 'singledata'=>$singledata]);
+    }
+
     public function multipleDelete(){
         $data = Input::except('_token');
         if($data['bulk-action'] == 0){
@@ -61,7 +75,7 @@ class adminController extends Controller
         if($data){
             $data->social = explode(',', $data->social);
         }
-        return view ('backend.settings',['data'=>$data]);
+        return view ('backend.setting',['data'=>$data]);
     }
 
     public function addPost(){
@@ -96,6 +110,40 @@ class adminController extends Controller
     public function deletePst($id){
         DB::table('posts')->where('pid',$id)->delete();
             return redirect()->back();
+    }
+
+    public function addDesa(){
+        $categories = DB::table('category_infs')->get();
+        return view ('backend.desa.add-desa', ['categories'=>$categories]);
+    }
+
+    public function allDesa(){
+        $desas = DB::table('desas')->orderby('did','DESC')->paginate(20);
+        foreach($desas as $desa){
+            $categories = explode(',',$desa->category_id);
+            foreach($categories as $cat){
+                $desacat = DB::table('category_infs')->where('cinid',$cat)->value('title');
+                $desacategories[] = $desacat;
+                $desacat = implode(' , ', $desacategories);
+            }
+            $desa->category_id = $desacat;
+            $desacategories = [];
+        }
+        $published = DB::table('desas')->where('status','publish')->count();
+        $alldesa = DB::table('desas')->count();
+        return view ('backend.desa.all-desa', ['desas'=>$desas, 'published'=>$published, 'alldesa'=>$alldesa]);
+    }
+
+    public function deleteDesa($id){
+        DB::table('desas')->where('did',$id)->delete();
+            return redirect()->back();
+    }
+
+    public function editDesa($id){
+        $data = DB::table('desas')->where('did',$id)->first();
+        $desacat = explode(',', $data->category_id);
+        $categories = DB::table('category_infs')->get();
+        return view ('backend.desa.edit', ['data'=>$data, 'desacat'=>$desacat, 'categories'=>$categories]);
     }
 
     public function addPage(){

@@ -1,142 +1,376 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-@yield('title')
-<title>DISKOMINFO | SUBANG</title>
-<link rel="icon" href="{{asset('images/logdis.png')}}" type="image/png">
-<link href="{{url('css/font-awesome.min.css')}}" rel="stylesheet"/>
-<link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet"/>
-<link href="{{url('css/bootstrap-theme.min.css')}}" rel="stylesheet" />
-<link href="{{url('css/style.css')}}" rel="stylesheet"  />
-<script src="{{url('js/jquery.min.js')}}"></script>
-<script src="{{url('js/bootstrap.min.js')}}"></script>
+<!DOCTYPE html>
+<html lang="zxx">
+	<head>
+		<!-- Meta Tag -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name='copyright' content='pavilan'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		@yield('title')
+		<!-- Title Tag  -->
+		<title>Lak Galuh Pakuan</title>
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/favicon.png" href="{{url('front/img/logo1.png')}}">
+		
+		<!-- Web Font -->
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<!-- Bizwheel Plugins CSS -->
+		<link rel="stylesheet" href="{{url('front/css/animate.min.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/cubeportfolio.min.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/font-awesome.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/jquery.fancybox.min.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/magnific-popup.min.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/owl-carousel.min.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/slicknav.min.css')}}">
 
-</head>
-
-<body>
-<div class="col-md-12 top" id="top">
-	<div class="col-md-9 top-left">
-    	<div class="col-md-3">
-        <img src="{{asset('images/logdis.png')}}" width="200px" height="80px" alt="newspaper logo">
-        </div>
-        <div class="col-md-9 latest-news">
-        	<span class="latest">Latest: </span> <a href="{{url('article')}}/{{$latestnews->slug}}">{{$latestnews->title}}</a>
-        </div>
-    </div>
-    <div class="col-md-3 top-social">
-        @foreach($setting->social as $key=>$social)
-    	<a href="{{$social}}" class="social-icon" ><i class="fa fa-{{$icons[$key]}}"></i></a>
-        @endforeach
-    </div>
-</div>
-
-<div class="col-md-12 main-menu">
-	<div class="col-md-10 menu">
-		<nav class="navbar">
-			<div class="navbar-header">
-    			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar"> 
-					<span class="icon-bar"></span>
-            		<span class="icon-bar"></span>
-            		<span class="icon-bar"></span>
-            		<span class="icon-bar"></span>
-        		</button>
-    		</div>
-    		<div class="collapse navbar-collapse" id="mynavbar">
-    			<ul class="nav nav-justified">
-    				<li><a href="{{url('/')}}" class="active"><span class="glyphicon glyphicon-home"></span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFILE <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                        @foreach($pages as $page)
-                        <li><a href="{{url('page')}}/{{$page->slug}}" class="text-uppercase">{{$page->title}}</a></li>
-                        @endforeach
-                       </ul>
-                   </li>
-                   <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LAYANAN <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                        @foreach($categories as $cat)
-                        <li><a href="{{url('category')}}/{{$cat->slug}}" class="text-uppercase">{{$cat->title}}</a></li>
-                        @endforeach
-                        <li><a href="{{url('aplikasi')}}" >APLIKASI DISKOMINFO</a></li>
-                       </ul>
-                       <li><a href="{{url('galleries')}}" class="active">GALLERY</a></li>
-                       <li><a href="{{url('contact-us')}}" class="active">CONTACT</a></li>
-                   </li>
-        		</ul> 
+		<!-- Bizwheel Stylesheet -->  
+		<link rel="stylesheet" href="{{url('front/css/reset.css')}}">
+		<link rel="stylesheet" href="{{url('front/style.css')}}">
+		<link rel="stylesheet" href="{{url('front/css/responsive.css')}}">
+		
+		<!-- Bizwheel Colors -->
+		<!--<link rel="stylesheet" href="css/skins/skin-1.css">
+		<!--<link rel="stylesheet" href="css/skins/skin-2.css">-->
+		<!--<link rel="stylesheet" href="css/skins/skin-3.css">-->
+		<!--<link rel="stylesheet" href="css/skins/skin-4.css">-->
+		
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+	</head>
+	<body id="bg">
+	
+		<!-- Boxed Layout -->
+		<div id="page" class="site boxed-layout"> 
+		
+		<!-- Preloader -->
+		<div class="preeloader">
+			<div class="preloader-spinner"></div>
+		</div>
+		<!--/ End Preloader -->
+	
+	<!-- ============================= HEADER =================================================-->
+		<!-- Header -->
+		<header class="header">
+			<!-- Topbar -->
+			<div class="topbar">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-12">
+							<!-- Top Contact -->
+							<div class="top-contact">
+								<div class="single-contact"><i class="fa fa-phone"></i>Phone: {{$setting->phone}}</div> 
+								<div class="single-contact"><i class="fa fa-envelope-open"></i>Email: {{$setting->email}}</div>	
+							</div>
+							<!-- End Top Contact -->
+						</div>	
+						<div class="col-lg-4 col-12">
+							<div class="topbar-right">
+								<!-- Social Icons -->
+								<ul class="social-icons">
+									@foreach($setting->social as $key=>$social)
+									<li><a href="{{$social}}"><i class="fa fa-{{$icons[$key]}}"></i></a></li>
+									@endforeach
+								</ul>															
+								<div class="button">
+									<a href="contact.html" class="bizwheel-btn">Get a Quote</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</nav>
-	</div>
-    <form action="{{url('search')}}" method="GET">
-	<div class="col-md-2">
-        <div class="search">
-        	<input type="text" id="query" name="query" value="{{ request()->input('query') }}" class="form-control" />
-            <span class="glyphicon glyphicon-search search-btn"></span>
-        </div>
-    </div>
-    </form>
-</div>
-<!-- Header-->
+			<!--/ End Topbar -->
+			<!-- Middle Header -->
+			<div class="middle-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="middle-inner">
+								<div class="row">
+									<div class="col-lg-2 col-md-3 col-12">
+										<!-- Logo -->
+										<div class="logo">
+											<!-- Image Logo -->
+											<div class="img-logo">
+												<a href="{{url('/')}}">
+													<img src="{{url('front/img/logo1.png')}}" width="50px" style="margin-bottom: 12px;" alt="#">
+												</a>
+											</div>
+										</div>								
+										<div class="mobile-nav"></div>
+									</div>
+									<div class="col-lg-10 col-md-9 col-12">
+										<div class="menu-area">
+											<!-- Main Menu -->
+<!-- ================================================================= NAVBAR ============================================ -->
+											<nav class="navbar navbar-expand-lg">
+												<div class="navbar-collapse">	
+													<div class="nav-inner">	
+														<div class="menu-home-menu-container">
+															<!-- Naviagiton -->
+															<ul id="nav" class="nav main-menu menu navbar-nav">
+																<li><a href="{{url('/')}}">Home</a></li>
+																<li class="icon-active"><a href="#">Galuh Pakuan</a>
+																	<ul class="sub-menu">
+																		@foreach($pages as $page)
+																		<li><a href="{{url('page')}}/{{$page->slug}}">{{$page->title}}</a></li>
+																		@endforeach
+																	</ul>
+																</li>
+																<li class="icon-active"><a href="#">Gallery</a>
+																	<ul class="sub-menu">
+																		<li><a href="blog.html">Foto</a></li>
+																		<li><a href="blog-single.html">Video</a></li>
+																	</ul>
+																</li>
+																<li class="icon-active"><a href="#">Kegiatan</a>
+																	<ul class="sub-menu">
+																		<li><a href="blog.html">Desa Digital</a></li>
+																		<li><a href="blog-single.html">Desa Wisata Agro</a></li>
+																		<li><a href="blog-single.html">Desa Wisata Industri</a></li>
+																	</ul>
+																</li>
+																<li class="icon-active"><a href="#">Berita</a>
+																	<ul class="sub-menu">
+																		@foreach($categories as $cat)
+																		<li><a href="{{url('category')}}/{{$cat->slug}}">{{$cat->title}}</a></li>
+																		@endforeach
+																	</ul>
+																</li>
+																<li class="icon-active"><a href="#">Event</a>
+																	<ul class="sub-menu">
+																		<li><a href="blog.html">Festival Jaipong Seri IV</a></li>
+																	</ul>
+																</li>
+																<li><a href="contact.html">Kontak Kami</a></li>
+															</ul>
+															<!--/ End Naviagiton -->
+														</div>
+													</div>
+												</div>
+											</nav>
+											<!--/ End Main Menu -->	
+											<!-- Right Bar -->
+											<div class="right-bar">
+												<!-- Search Bar -->
+												<ul class="right-nav">
+													<li class="top-search"><a href="#0"><i class="fa fa-search"></i></a></li>
+													<li class="bar"><a class="fa fa-bars"></a></li>
+												</ul>
+												<!--/ End Search Bar -->
+												<!-- Search Form -->
+												<div class="search-top">
+													<form action="#" class="search-form" method="get">
+														<input type="text" name="s" value="" placeholder="Search here"/>
+														<button type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+													</form>
+												</div>
+												<!--/ End Search Form -->
+											</div>	
+											<!--/ End Right Bar -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Middle Header -->
+			<!-- Sidebar Popup -->
+			<div class="sidebar-popup">
+				<div class="cross">
+					<a class="btn"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="single-content">
+					<h4>About Bizwheel</h4>
+					<p>The main component of a healthy environment for self esteem is that it needs be nurturing. It should provide unconditional warmth.</p>
+					<!-- Social Icons -->
+					<ul class="social">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+					</ul>
+				</div>
+				<div class="single-content">
+					<h4>Important Links</h4>   
+					<ul class="links">
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Our Services</a></li>
+						<li><a href="#">Portfolio</a></li>
+						<li><a href="#">Pricing Plan</a></li>
+						<li><a href="#">Blog & News</a></li>
+						<li><a href="#">Contact us</a></li>
+					</ul>
+				</div>	
+			</div>
+			<!--/ Sidebar Popup -->	
+		</header>
+		<!--/ End Header -->
 
 @yield('content')
 
-<!-- Footer -->
-<div class="col-md-12 bottom">
-        <div class="col-md-4">
-            <h3 style="border-bottom:2px solid #ccc;"><span style="border-bottom:2px solid #f00;">About Us</span></h3>
-            <div class="col-md-12" style="margin-left: 110px; padding-bottom: 10px;">
-                <img src="{{asset('images/logdis.png')}}" width="200px" height="80px" alt="newspaper logo">
-            </div>
-            <p align="justify">{{$setting->about}}</p>
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-12">
-                <h3 style="border-bottom:2px solid #ccc;"><span style="border-bottom:2px solid #f00;">Quick Links</span></h3>
-                <ul class="nav">
-                    @foreach($pages as $page)
-                    <li><a href="{{url('page')}}/{{$page->slug}}" class="text-uppercase">{{$page->title}}</a></li>
-                    @endforeach
-                    <li><a href="{{url('contact-us')}}" class="text-uppercase">Contact Us</li>
-                </ul> 
-            </div>    
-        </div>
-        <div class="col-md-4">
-            <h3 style="border-bottom:2px solid #ccc;"><span style="border-bottom:2px solid #f00;">Contact Us</span></h3>
-            <ul class="list-unstyled">
-                            <li>{{$setting->address}}</li>
-                            <li><i class="fa fa-phone" style="color: #333;"></i> {{$setting->phone}}</li>
-                            <li><i class="fa fa-envelope-o" style="color: #333;"></i> E-mail: <a class="text-success" href="#">{{$setting->email}}</a></li>
-                        </ul>
-            <p>Follow us at:</p>
-            @foreach($setting->social as $key=>$social)
-                <a href="{{$social}}" class="social-icon"><i class="fa fa-{{$icons[$key]}}"></i></a>
-            @endforeach
-            <a href="#top" class=" goto"><span class="glyphicon glyphicon-chevron-up"></span></a><br />
-        </div>
-</div>
-
-<div class="col-md-12 text-center copyright">
-</div>
-
-<script>            
-    $(document).ready(function() {
-        var duration = 500;
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 500) {
-                $('.goto').fadeIn(duration);
-            } else {
-                $('.goto').fadeOut(duration);
-            }
-        });
-
-        $('.goto').click(function(event) {
-            event.preventDefault();
-            $('html').animate({scrollTop: 0}, duration);
-            return false;
-        })
-    });
-</script>   
-
-</body>
+				<!-- Footer -->
+		<footer class="footer" style="background-image:url('img/map.png')">
+			<!-- Footer Top -->
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-6 col-12">
+							<!-- Footer About -->		
+							<div class="single-widget footer-about widget">	
+								<div class="logo">
+									<div class="img-logo text-center">
+										<a class="logo" href="index.html">
+											<img class="img-responsive" src="img/logo1.png" width="100px" alt="logo">
+										</a>
+									</div>
+								</div>
+								<div class="footer-widget-about-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor incididunt ut labore et dolore magna aliqua. </p>
+								</div>	
+								<div class="social">
+									<!-- Social Icons -->
+									<ul class="social-icons">
+										<li><a class="facebook" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a class="twitter" href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a class="linkedin" href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+										<li><a class="pinterest" href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
+										<li><a class="instagram" href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+									</ul>
+								</div>
+								<div class="button"><a href="#" class="bizwheel-btn">About Us</a></div>
+							</div>		
+							<!--/ End Footer About -->		
+						</div>
+						<div class="col-lg-2 col-md-6 col-12">
+							<!-- Footer Links -->		
+							<div class="single-widget f-link widget">
+								<h3 class="widget-title">Company</h3>
+								<ul>
+									<li><a href="#">Tentang</a></li>
+									<li><a href="#">Gallery</a></li>
+									<li><a href="#">Berita</a></li>
+									<li><a href="#">Download</a></li>
+									<li><a href="#">Lain-lain</a></li>
+								</ul>
+							</div>			
+							<!--/ End Footer Links -->			
+						</div>
+						<div class="col-lg-4 col-md-6 col-12">
+							<!-- Footer News -->
+							<div class="single-widget footer-news widget">	
+								<h3 class="widget-title">Terkini</h3>
+								<!-- Single News -->
+								<div class="single-f-news">
+									<div class="post-thumb"><a href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a></div>
+									<div class="content">
+										<p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>April 15, 2020</time></p>
+										<h4 class="title"><a href="blog-sngle.html">Ayam siap dipotong untuk digoreng</a></h4>
+									</div>
+								</div>
+								<!--/ End Single News -->
+								<!-- Single News -->
+								<div class="single-f-news">
+									<div class="post-thumb"><a href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a></div>
+									<div class="content">
+										<p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>April 10, 2020</time></p>
+										<h4 class="title"><a href="blog-sngle.html">Makan di KFC sama mantan</a></h4>
+									</div>
+								</div>
+								<!--/ End Single News -->
+								<!-- Single News -->
+								<div class="single-f-news">
+									<div class="post-thumb"><a href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a></div>
+									<div class="content">
+										<p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>April 10, 2020</time></p>
+										<h4 class="title"><a href="blog-sngle.html">Mandi pakai sarung</a></h4>
+									</div>
+								</div>
+								<!--/ End Single News -->
+							</div>			
+							<!--/ End Footer News -->			
+						</div>
+						<div class="col-lg-3 col-md-6 col-12">	
+							<!-- Footer Contact -->		
+							<div class="single-widget footer_contact widget">	
+								<h3 class="widget-title">Kontak</h3>
+								<p>Hubungi kami pada menu dibawah ini.</p>
+								<ul class="address-widget-list">
+									<li class="footer-mobile-number"><i class="fa fa-phone"></i>+(600) 125-4985-214</li>
+									<li class="footer-mobile-number"><i class="fa fa-envelope"></i>halloprakarsa@gmail.com</li>
+									<li class="footer-mobile-number"><i class="fa fa-map-marker"></i>Lokasi Kami</li>
+								</ul>
+							</div>		
+							<!--/ End Footer Contact -->						
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+							<!-- Footer Newsletter -->
+							<div class="footer-newsletter">
+								<form action="#" method="post" class="newsletter-area">
+									<input type="email" placeholder="Your email address">
+									<button type="submit">Sign Up</button>
+								</form>
+							</div>
+							<!--/ End Footer Newsletter -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Copyright -->
+			<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="copyright-content">
+								<!-- Copyright Text -->
+								<p>© Copyright <a href="#">Lakgaluhpakuan</a>. Design &amp; Development By <a target="_blank" href="#">galuhpakuan.id</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Copyright -->
+		</footer>
+		
+		<!-- Jquery JS -->
+		<script src="{{url('front/js/jquery.min.js')}}"></script>
+		<script src="{{url('front/js/jquery-migrate-3.0.0.js')}}"></script>
+		<!-- Popper JS -->
+		<script src="{{url('front/js/popper.min.js')}}"></script>
+		<!-- Bootstrap JS -->
+		<script src="{{url('front/js/bootstrap.min.js')}}"></script>
+		<!-- Modernizr JS -->
+		<script src="{{url('front/js/modernizr.min.js')}}"></script>
+		<!-- ScrollUp JS -->
+		<script src="{{url('front/js/scrollup.js')}}"></script>
+		<!-- FacnyBox JS -->
+		<script src="{{url('front/js/jquery-fancybox.min.js')}}"></script>
+		<!-- Cube Portfolio JS -->
+		<script src="{{url('front/js/cubeportfolio.min.js')}}"></script>
+		<!-- Slick Nav JS -->
+		<script src="{{url('front/js/slicknav.min.js')}}"></script>
+		<!-- Slick Nav JS -->
+		<script src="{{url('front/js/slicknav.min.js')}}"></script>
+		<!-- Slick Slider JS -->
+		<script src="{{url('front/js/owl-carousel.min.js')}}"></script>
+		<!-- Easing JS -->
+		<script src="{{url('front/js/easing.js')}}"></script>
+		<!-- Magnipic Popup JS -->
+		<script src="{{url('front/js/magnific-popup.min.js')}}"></script>
+		<!-- Active JS -->
+		<script src="{{url('front/js/active.js')}}"></script>
+	</body>
 </html>

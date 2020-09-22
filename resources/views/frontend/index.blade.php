@@ -1,149 +1,256 @@
 @extends ('frontend.master')
 @section ('content') 
-<div class="wrapper">
-    <div class="col-md-12">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        @foreach($banners as $banner)
-        <li data-target="#myCarousel" data-slide-to="{{ $loop->index }}" class="{{ $loop->index == 0 ? 'active' : ''}}"></li>
-        @endforeach
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        @foreach($banners as $banner)
-        <div class="item {{$loop->index == 0 ? 'active' : ''}}">
-          <img src="{{asset('posts/'.$banner->image)}}" alt="{{$banner->title}}" style="width: 100%; height: 80%;">
-          <div class="carousel-caption">
-            <a href="{{url('article')}}/{{$banner->slug}}"><h3>{{$banner->title}}</h3></a>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-    @if(count($featured) > 0)
-	<div class="row" style="padding-bottom: : 20px;">
-        @foreach($featured as $key=>$f)
-        @if($key == 0)
-        <div class="col-md-12">
-                <h3 style="border-bottom:3px solid #ff7403; padding-bottom:5px;"><span style="padding:6px 12px; background:#ff7403;">FEATURED</span></h3>
-            </div>
-		<div class="col-md-6">
-            <div class="relative">
-        		<a href="{{url('article')}}/{{$f->slug}}">
-                    <img src="{{url('posts')}}/{{$f->image}}" width="100%" height="360px" />
-                    <span class="caption">{{$f->title}}</span>
-                </a>
-            </div>
-    	</div>
-        @endif
-        @endforeach
-    	<div class="col-md-6">
-    		<div class="row">
-                @foreach($featured as $key=>$f)
-                @if($key > 0 && $key < 3)
-        		<div class="col-md-6">
-                    <div class="relative">
-                        <a href="{{url('article')}}/{{$f->slug}}">
-                            <img src="{{url('posts')}}/{{$f->image}}" width="100%" height="165px" />
-                            <span class="caption">{{$f->title}}</span>
-                        </a>
-                    </div>
-                </div>
-                @endif
-                @endforeach
-        	</div>
-        	<div class="row" style="margin-top:30px;">
-                @foreach($featured as $key=>$f)
-                    @if($key > 3 && $key < 6)
-        		<div class="col-md-6">
-                    <div class="relative">
-                        <a href="{{url('article')}}/{{$f->slug}}">
-                            <img src="{{url('posts')}}/{{$f->image}}" width="100%" height="165px" />
-                            <span class="caption">{{$f->title}}</span>
-                        </a>
-                    </div>
-                </div>
-                @endif
-                @endforeach
-        	</div>        
-    	</div>
-	</div>
-    @endif
-    
-        <div class="row" style="margin-top:30px;">
-        	<div class="col-md-8">
-            <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px;">
-            	<div class="col-md-12">
-            		<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">BERITA TERBARU</span></h3>
-            	</div>
-            	<div class="col-md-6">
-                    @foreach($beritas as $key=>$berita)
-                    @if($key == 0)
-                	<a href="{{url('article')}}/{{$berita->slug}}"><img src="{{url('posts')}}/{{$berita->image}}" width="100%" style="margin-bottom:15px;" /></a>
-                    <h3><a href="{{url('article')}}/{{$berita->slug}}">{{$berita->title}}</a></h3>
-            		<p align="justify">{!! substr($berita->description,0,300) !!}</p><a href="{{url('article')}}/{{$berita->slug}}">Read more &raquo;</a>
-                    @endif
-                    @endforeach
-                </div>
-                <div class="col-md-6">
-                    @foreach($beritas as $key=>$berita)
-                    @if($key > 0 && $key < 6)
-                	<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-    	            	<div class="col-md-4">
-                        	<div class="row">
-        	            		<a href="{{url('article')}}/{{$berita->slug}}"><img src="{{url('posts')}}/{{$berita->image}}" width="100%" /></a>
-            	        	</div>
-                        </div>
-                	    <div class="col-md-8">
-                        	<div class="row">
-                    			<h4><a href="{{url('article')}}/{{$berita->slug}}">{{$berita->title}}</a></h4>
-                    		</div>
-                        </div>
-                    </div>
-                    @endif
-                    @endforeach    
-                </div>
-            </div>
-            
-    	        <div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
-        	    	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">GALLERY</span></h3>
-                    <div class="flex"> 
-                        @foreach($sliders->take(5) as $b)
-                        <div>
-                	       <a href="{{url('gallery')}}"><img src="{{url('sliders')}}/{{$b->image}}"/></a>
-                        </div>
-                        @endforeach
-                    </div>
-    	        </div>
-        </div>
-
-
-            <div class="col-md-4">
-                @if($sidebarBottom)
-                <div class="sidebar-adv"><a href="{{$sidebarBottom->url}}"><img src="{{url('advertisements')}}/{{$sidebarBottom->image}}" height="300px" width="100%" alt="{{$sidebarBottom->title}}" /></a></div>
-              @endif 
-            </div>
-        </div>
-    </div> 
-</div>
-
-
+		
+		<!-- Hero Slider -->
+		<section class="hero-slider style1">
+			<div class="home-slider">
+				<!-- Single Slider -->
+				@foreach($banners as $banner)
+				<div class="single-slider">
+					<img src="{{asset('posts/'.$banner->image)}}">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7 col-md-8 col-12">
+								<div class="carousel-caption" style="padding-bottom: 50%;"> 
+									<div class="hero-text"> 
+										<h4>{{$banner->title}}</h4>
+										<div class="p-text">
+											<!-- <p>Nunc tincidunt venenatis elit. Etiam venenatis quam vel maximus bibendum Pellentesque elementum dapibus diam tristique</p> -->
+										</div>
+										<div class="button">
+											<a href="{{url('article')}}/{{$banner->slug}}" class="bizwheel-btn theme-1 effect" style="margin-right: 100%;">Detail</a>
+											<!-- <a href="portfolio.html" class="bizwheel-btn theme-2 effect">View Our Portfolio</a> -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
+			</div>
+		</section>
+		<!--/ End Hero Slider -->
+		
+		<!-- Features Area -->
+		
+		<!--/ End Features Area -->
+		
+		<!-- Call To Action -->
+		<hr style="size: 50px; color: yellow">
+		<section class="call-action" style="background-image:url('front/img/festivaljaipong.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 col-12">
+						<div class="call-inner">
+							<h2>Ikuti Festival Tari Jaipong</h2>
+							<h3 style="color:white">Kreasi Galuh Pakuan Seri IV</h3>
+						</div>
+					</div>
+					<div class="col-lg-3 col-12">
+						<div class="button">
+							<a href="portfolio.html" class="bizwheel-btn">DAFTAR</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Call to action -->
+		
+		<!-- Services -->
+		
+		<!--/ End Services -->
+		
+		<!-- Portfolio -->
+		<section class="portfolio section-space">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+						<div class="section-title default text-center">
+							<div class="section-top">
+								<h1><span>Simak</span><b>Profil Kegiatan Kami</b></h1>
+							</div>
+							<div class="section-bottom">
+								<div class="text">
+									<p>Lorem Ipsum Dolor Sit Amet, Conse Ctetur Adipiscing Elit, Sed Do Eiusmod Tempor Ares Incididunt Utlabore. Dolore Magna Ones Baliqua</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+					<div class="col-12">
+						<div class="portfolio-main">
+							<div id="portfolio-item" class="portfolio-item-active">
+								<div class="cbp-item business animation">
+									<!-- Single Portfolio -->
+									<div class="single-portfolio">
+										<div class="portfolio-head overlay">
+											<img src="{{url('front/img/desadigital.jpg')}}" alt="#">
+											<a class="more" href="portfolio-single.html"><i class="fa fa-long-arrow-right"></i></a>
+										</div>
+										<div class="portfolio-content">
+											<h4><a href="portfolio-single.html">Desa Digital</a></h4>
+											<p>Business, Aniamtion</p>
+										</div>
+									</div>
+									<!--/ End Single Portfolio -->
+								</div>
+								<div class="cbp-item seo consulting">
+									<!-- Single Portfolio -->
+									<div class="single-portfolio">
+										<div class="portfolio-head overlay">
+											<img src="https://via.placeholder.com/600x415" alt="#">
+											<a class="more" href="portfolio-single.html"><i class="fa fa-long-arrow-right"></i></a>
+										</div>
+										<div class="portfolio-content">
+											<h4><a href="portfolio-single.html">Desa Wisata Agro</a></h4>
+											<p>Seo, Consulting</p>
+										</div>
+									</div>
+									<!--/ End Single Portfolio -->
+								</div>
+								<div class="cbp-item marketing seo">
+									<!-- Single Portfolio -->
+									<div class="single-portfolio">
+										<div class="portfolio-head overlay">
+											<img src="https://via.placeholder.com/600x415" alt="#">
+											<a class="more" href="portfolio-single.html"><i class="fa fa-long-arrow-right"></i></a>
+										</div>
+										<div class="portfolio-content">
+											<h4><a href="portfolio-single.html">Desa Wisata Industri</a></h4>
+											<p>Marketing, SEO</p>
+										</div>
+									</div>
+									<!--/ End Single Portfolio -->
+								</div>
+								
+									<!--/ End Single Portfolio -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Portfolio -->
+		
+		<!-- Testimonials -->
+		<section class="testimonials section-space" style="background-image:url('front/img/rajalak2.jpg')">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-9 col-12">
+						<div class="section-title default text-left">
+							<div class="section-top">
+								<h1 style="color:white"><b>Kata-kata Bijak Raja Galuh Pakuan</b></h1>
+							</div>
+							<div class="section-bottom">
+							</div>
+						</div>
+						<div class="testimonial-inner">
+							
+								<!-- Single Testimonial -->
+								<div class="single-slider">
+									
+									<p>Ngawangun Bangsa Sunda Mibanda Jiwa Tangguh, Raga Kuat, Rasa Asih, Pakeun Ngamulyakeun Nu Hina, Nguatkeun Nu Lemah, Minterkeun Nu Bodo, Ngabeungharkeun Nu Miskin, Tug Dugi Kawangun Tahta Raja Pakeun Rakyatna.</p>
+									<!-- Client Info -->
+									<div class="t-info">
+										<div class="t-left">
+											<div class="client-head"><img src="https://via.placeholder.com/70x70" alt="#"></div>
+											<h2>Evi Silviadi <span>Rahyang Mandalajati</span></h2>
+										</div>
+										<div class="t-right">
+											<div class="quote"><i class="fa fa-quote-right"></i></div>
+										</div>
+									</div>
+								</div>
+								<!-- / End Single Testimonial -->
+								<!-- Single Testimonial -->
+							
+								<!-- Single Testimonial -->
+								
+									
+								</div>
+								<!-- / End Single Testimonial -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Testimonials -->
+		
+		<!-- Latest Blog -->
+		<section class="latest-blog section-space">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+						<div class="section-title default text-center">
+							<div class="section-top">
+								<h1><span>Berita</span><b> Kilasan Berita Terupdate</b></h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="blog-latest blog-latest-slider">
+							@foreach($beritas as $key=>$berita)
+                    		@if($key > 0 && $key < 6)
+							<div class="single-slider">
+								<!-- Single Blog -->
+								<div class="single-news ">
+									<div class="news-head overlay">
+										<span class="news-img"><img src="{{url('posts')}}/{{$berita->image}}" width="100%" style="padding-top: 30px;">
+										</span>
+										<a href="{{url('article')}}/{{$berita->slug}}" class="bizwheel-btn theme-2">Read more</a>
+									</div>
+									<div class="news-body">
+										<div class="news-content">
+											<h3 class="news-title"><a href="{{url('article')}}/{{$berita->slug}}">{{$berita->title}}</a></h3>
+											<div class="news-text"><p>{!! substr($berita->description,0,100) !!}</p></div>
+											<ul class="news-meta">
+												<li class="date"><i class="fa fa-calendar"></i><small>{{$berita->created_at}}</small></li>
+												<li class="view"><i class="fa fa-eye"></i><small>{{ $berita->views + 1 }}
+                                                @if($berita->views !=0)
+                                                Views 
+                                                @else
+                                                View
+                                                @endif
+                                            </small></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							@endif
+							@endforeach
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Latest Blog -->
+		
+		<!-- Client Area -->
+		<div class="clients section-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="partner-slider">
+							@foreach($aplikasis as $app)
+							<!-- Single client -->
+							<div class="single-slider">
+								<div class="single-client">
+									<a href="{{$app->url}}" target="_blank"><img src="{{url('aplikasis')}}/{{$app->image}}" alt="#"></a>
+								</div>
+							</div>
+							@endforeach
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Client Area -->
+		
 @stop
-<script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
-</script>

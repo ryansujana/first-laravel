@@ -35,6 +35,19 @@
         </li>
         <li class="treeview">
             <a href="#">
+              <i class="fa fa-bookmark-o"></i> <span>Desa</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{url('all-desa')}}"><i class="fa fa-eye"></i>All Desa</a></li>
+              <li><a href="{{url('add-desa')}}"><i class="fa fa-plus-circle"></i>Add Desa</a></li>
+              <li><a href="{{url('viewcategoryinf')}}"><i class="fa fa-plus-circle"></i>Categories</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
               <i class="fa fa-file"></i> <span>Pages</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -102,7 +115,7 @@
             </a>            
         </li>       
         <li class="treeview">
-            <a href="{{url('settings')}}">
+            <a href="{{url('setting')}}">
               <i class="fa fa-gear"></i> <span>Settings</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>

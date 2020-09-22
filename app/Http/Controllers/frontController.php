@@ -51,8 +51,9 @@ class frontController extends Controller
         $banners = DB::table('posts')->where('category_id','LIKE','%29%')->orderby('pid','DESC')->get();
         $sliders = DB::table('sliders')->where('status','display')->orderby('sid','DESC')->get();
         $beritas = DB::table('posts')->where('category_id','LIKE','%31%')->orderby('pid','DESC')->get();
+        $aplikasis = DB::table('aplikasis')->where('status','display')->orderby('apid','DESC')->get();
 
-        return view ('frontend.index',['featured'=>$featured, 'general'=>$general, 'business'=>$business, 'sports'=>$sports, 'technology'=>$technology, 'health'=>$health, 'travel'=>$travel, 'entertainment'=>$entertainment, 'politics'=>$politics,'style'=>$style,'banners'=>$banners, 'sliders'=>$sliders, 'beritas'=>$beritas]);
+        return view ('frontend.index',['featured'=>$featured, 'general'=>$general, 'business'=>$business, 'sports'=>$sports, 'technology'=>$technology, 'health'=>$health, 'travel'=>$travel, 'entertainment'=>$entertainment, 'politics'=>$politics,'style'=>$style,'banners'=>$banners, 'sliders'=>$sliders, 'beritas'=>$beritas, 'aplikasis'=>$aplikasis]);
     }
 
     public function category($slug){
@@ -70,7 +71,8 @@ class frontController extends Controller
         $category = $category[0];
         $related = DB::table('posts')->where('category_id','LIKE','%'.$category.'%')->get();
         $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
-    	return view ('frontend.article',['data'=>$data, 'related'=>$related, 'latest'=>$latest]);
+        $populars = DB::table('posts')->orderby('views','DESC')->get();
+    	return view ('frontend.article',['data'=>$data, 'related'=>$related, 'latest'=>$latest, 'populars'=>$populars]);
     }
 
     public function page($slug){
