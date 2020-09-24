@@ -42,16 +42,16 @@
 
                                 <div class="post-sharing">
                                     <ul class="list-inline">
-                                        <div class="fb-share-button" data-href="{{url('article')}}/{{$data->slug}}" data-layout="button" data-size="small"></div>
+                                        <div class="fb-share-button" data-href="{{url('desa')}}/{{$data->slug}}" data-layout="button" data-size="small"></div>
                                     <span class="tweet-btn">
-                                    <a class="twitter-share-button" href="{{url('article')}}/{{$data->slug}}" data-size="small">
+                                    <a class="twitter-share-button" href="{{url('desa')}}/{{$data->slug}}" data-size="small">
                                     Tweet</a>
                                     </ul>
                                 </div><!-- end post-sharing -->
                             </div><!-- end title -->
 
                             <div class="single-post-media">
-                                <img src="{{url('posts')}}/{{$data->image}}" alt="" class="img-fluid">
+                                <img src="{{url('desas')}}/{{$data->image}}" alt="" class="img-fluid">
                             </div><!-- end media -->
 
                             <div class="blog-content">  

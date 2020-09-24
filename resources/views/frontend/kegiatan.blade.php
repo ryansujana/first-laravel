@@ -3,7 +3,7 @@
 <title>{{$cat->title}} | Lak Galuh</title>
 @stop
 @section ('content') 
-	<section class="section">
+    <section class="section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -13,22 +13,22 @@
                             </div><!-- end blog-top -->
 
                             <div class="blog-list clearfix">
-                                @foreach($posts as $key=>$post)
+                                @foreach($desas as $key=>$post)
                                 @if($key > 0 && $key < 6)
                                 <div class="blog-box row">
                                     <div class="col-md-4">
                                         <div class="post-media">
-                                            <a href="{{url('article')}}/{{$post->slug}}" title="">
-                                                <img src="{{url('posts')}}/{{$post->image}}" alt="" class="img-fluid">
+                                            <a href="{{url('desas')}}/{{$post->slug}}" title="">
+                                                <img src="{{url('desas')}}/{{$post->image}}" alt="" class="img-fluid" style="height: 150px;">
                                                 <div class="hovereffect"></div>
                                             </a>
                                         </div><!-- end media -->
                                     </div><!-- end col -->
 
                                     <div class="blog-meta big-meta col-md-8">
-                                        <h4><a href="{{url('article')}}/{{$post->slug}}">{{$post->title}}</a></h4>
+                                        <h4><a href="{{url('desa')}}/{{$post->slug}}">{{$post->title}}</a></h4>
                                         <p>{!! substr($post->description,0,300) !!}</p>
-                                        <a href="{{url('article')}}/{{$post->slug}}"></a>
+                                        <a href="{{url('desa')}}/{{$post->slug}}"></a>
                                         <i class="fa fa-calendar"></i>
                                         <small>{{ $post->created_at }}</small>
                                         <i class="fa fa-eye"></i>
@@ -45,12 +45,12 @@
                                 @endforeach
 
                                 <div class="d-flex justify-content-center">
-                                    {!! $posts->links() !!}
+                                    {!! $desas->links() !!}
                                 </div>
 
-                                <hr class="invis">
                             </div>
                         </div><!-- end page-wrapper -->
+
                     </div><!-- end col -->
 
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">

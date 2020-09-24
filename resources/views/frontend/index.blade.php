@@ -49,7 +49,7 @@
 					</div>
 					<div class="col-lg-3 col-12">
 						<div class="button">
-							<a href="portfolio.html" class="bizwheel-btn">DAFTAR</a>
+							<a href="http://bit.ly/FestivalTariJaipongKreasi_GPcupIV" class="bizwheel-btn">DAFTAR</a>
 						</div>
 					</div>
 				</div>
@@ -82,48 +82,17 @@
 					<div class="col-12">
 						<div class="portfolio-main">
 							<div id="portfolio-item" class="portfolio-item-active">
+								@foreach($catinfs as $category)
 								<div class="cbp-item business animation">
 									<!-- Single Portfolio -->
-									<div class="single-portfolio">
-										<div class="portfolio-head overlay">
-											<img src="{{url('front/img/desadigital.jpg')}}" alt="#">
-											<a class="more" href="portfolio-single.html"><i class="fa fa-long-arrow-right"></i></a>
-										</div>
+									<div class="single-portfolio" style="padding-top: 30px;">
 										<div class="portfolio-content">
-											<h4><a href="portfolio-single.html">Desa Digital</a></h4>
-											<p>Business, Aniamtion</p>
+											<h4><a href="{{('kegiatan')}}/{{$category->slug}}">{{$category->title}}</a></h4>
 										</div>
 									</div>
 									<!--/ End Single Portfolio -->
 								</div>
-								<div class="cbp-item seo consulting">
-									<!-- Single Portfolio -->
-									<div class="single-portfolio">
-										<div class="portfolio-head overlay">
-											<img src="https://via.placeholder.com/600x415" alt="#">
-											<a class="more" href="portfolio-single.html"><i class="fa fa-long-arrow-right"></i></a>
-										</div>
-										<div class="portfolio-content">
-											<h4><a href="portfolio-single.html">Desa Wisata Agro</a></h4>
-											<p>Seo, Consulting</p>
-										</div>
-									</div>
-									<!--/ End Single Portfolio -->
-								</div>
-								<div class="cbp-item marketing seo">
-									<!-- Single Portfolio -->
-									<div class="single-portfolio">
-										<div class="portfolio-head overlay">
-											<img src="https://via.placeholder.com/600x415" alt="#">
-											<a class="more" href="portfolio-single.html"><i class="fa fa-long-arrow-right"></i></a>
-										</div>
-										<div class="portfolio-content">
-											<h4><a href="portfolio-single.html">Desa Wisata Industri</a></h4>
-											<p>Marketing, SEO</p>
-										</div>
-									</div>
-									<!--/ End Single Portfolio -->
-								</div>
+								@endforeach
 								
 									<!--/ End Single Portfolio -->
 								</div>
@@ -136,7 +105,7 @@
 		<!--/ End Portfolio -->
 		
 		<!-- Testimonials -->
-		<section class="testimonials section-space" style="background-image:url('front/img/rajalak2.jpg')">
+		<section class="testimonials section-space" style="background-image:url('front/img/rajalak2.jpg');">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-md-9 col-12">
@@ -156,8 +125,9 @@
 									<!-- Client Info -->
 									<div class="t-info">
 										<div class="t-left">
-											<div class="client-head"><img src="https://via.placeholder.com/70x70" alt="#"></div>
-											<h2>Evi Silviadi <span>Rahyang Mandalajati</span></h2>
+											<div class="client-head">
+												<a href="https://www.facebook.com/evi.silviadi"><img src="{{url('front/img/abu.jpg')}}" alt="#"></a></div>
+											<h2>Evi Silviadi <span>Rahyang Mandalajati</span><span style="font-size: 10px;"><a href="https://www.facebook.com/evi.silviadi">https://www.facebook.com/evi.silviadi</a></span></h2>
 										</div>
 										<div class="t-right">
 											<div class="quote"><i class="fa fa-quote-right"></i></div>
@@ -181,7 +151,7 @@
 		<!--/ End Testimonials -->
 		
 		<!-- Latest Blog -->
-		<section class="latest-blog section-space">
+		<section class="latest-blog">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
@@ -235,6 +205,15 @@
 		<!-- Client Area -->
 		<div class="clients section-bg">
 			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+						<div class="section-title default text-center">
+							<div class="section-top">
+								<h1><b> Hubungan</b></h1>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-12">
 						<div class="partner-slider">

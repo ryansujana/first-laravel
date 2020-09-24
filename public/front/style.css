@@ -1259,7 +1259,7 @@ blockquote {
 }
 .single-f-news .post-meta {
     margin-top: 5px;
-    font-size: 13px;
+    font-size: 10px;
 }
 .single-f-news .post-meta i{
 	color:#179E66;
@@ -1948,7 +1948,7 @@ p.has-large-font-size {
   padding-left: 85px;
 }
 .footer-news .single-f-news .content .title {
-  font-size: 14px;
+  font-size: 13px;
 }
 .footer-news .single-f-news .content .title a {
     color: #ccc;
@@ -1973,7 +1973,7 @@ p.has-large-font-size {
 .footer .address-widget-list li a {
     font-weight: normal;
     color: #ccc;
-    font-size: 15px;
+    font-size: 13px;
 }
 .footer .address-widget-list li i {
     width: 25px;
@@ -4836,6 +4836,140 @@ hr.invis1 {
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+.blog-top {
+    margin-bottom: 2rem;
+}
+.blog-top h4 {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    font-size: 19px;
+    color: #111111;
+}
+.blog-top a{
+    text-decoration: none !important;
+    color: #111111;
+}
+.authorbox p a, .pp a, .blog-top .fa-rss, a:hover, a:focus {
+    color: #FF6347 !important;
+}
+.blog-top .fa {
+    font-size: 18px !important;
+    line-height: 1 !important;
+    padding-left: 10px;
+}
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+}
+h1, h2, h3, h4, h5, body, .navbar-toggleable-md .navbar-nav .nav-link, .market-header, .btn, .dropdown-item, .form-control, p {
+    font-family: 'Poppins', serif !important;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.4;
+    color: #111111;
+}
+.hovereffect {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    zoom: 1;
+    filter: alpha(opacity=0);
+    opacity: 0.5;
+    background: -moz-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
+    background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+}
+.blog-list .blog-meta.big-meta h4 {
+    margin-left: -20%;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    padding: 1rem 1.5rem 1rem;
+}
+.blog-meta.big-meta h4 {
+    font-size: 16px;
+}
+.blog-meta.big-meta p {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0;
+}
+.blog-box {
+    padding-bottom: 50px;
+}
+.page-title {
+    padding: 3rem 0;
+    background-color: #edeff2;
+}
+.page-title h2 {
+    font-size: 24px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+.page-title i {
+    border-radius: 40px;
+    display: inline-block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 0.3rem;
+    margin-top: -0.4rem;
+    text-align: center;
+    vertical-align: middle;
+    width: 40px;
+}
+.page-title .bg-orange, .masonry-box:hover .blog-meta span.bg-orange, .color-orange a {
+    background-color: #FF6347 !important;
+}
+.tag-cloud-single span, .page-title i, .btn:hover, .sitemap-wrapper .year, .btn:focus, .navbar-inverse .navbar-toggler {
+    color: #ffffff !important;
+    background-color: #3197d6;
+}
+.wb {
+    background-color: #ffffff;
+    border-top: 1px dashed #dadada;
+}
+.form-wrapper .form-control {
+    background: #fff none repeat scroll 0 0;
+    border: 1px dashed #dadada;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.3px;
+    margin-bottom: 1.4rem;
+    min-height: 50px;
+    text-transform: none;
+}
+.section {
+    padding: 4rem 0;
+    display: block;
+    position: relative;
+    background-color: #ffffff;
+}
+.btn {
+    background-color: #111111;
+    border: 0 none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0.8rem 2rem;
+    text-transform: none;
+}
+.btn, .page-link:hover, .page-link:focus, .btn:hover, .btn:focus {
+    color: #ffffff !important;
+    background: rgba(0, 0, 0, 0) linear-gradient(to right, #0091e5 0px, #00b7e5 100%) repeat scroll 0 0 !important;
 }
 /*=======================
   End Mail Success CSS

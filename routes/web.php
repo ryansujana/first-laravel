@@ -15,6 +15,8 @@ Route::get('/', 'frontController@index');
 Route::get('article/{slug}','frontController@article');
 Route::get('category/{slug}', 'frontController@category');
 Route::get('page/{slug}','frontController@page');
+Route::get('kegiatan/{slug}', 'frontController@kegiatan');
+Route::get('desa/{slug}', 'frontController@desa');
 Route::get('contact-us','frontController@contactUs');
 Route::post('sendmessage','crudController@insertData');
 Route::get('galleries','frontController@gallery');

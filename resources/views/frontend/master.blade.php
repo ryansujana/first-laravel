@@ -78,10 +78,7 @@
 									@foreach($setting->social as $key=>$social)
 									<li><a href="{{$social}}"><i class="fa fa-{{$icons[$key]}}"></i></a></li>
 									@endforeach
-								</ul>															
-								<div class="button">
-									<a href="contact.html" class="bizwheel-btn">Get a Quote</a>
-								</div>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -127,15 +124,15 @@
 																</li>
 																<li class="icon-active"><a href="#">Gallery</a>
 																	<ul class="sub-menu">
-																		<li><a href="blog.html">Foto</a></li>
-																		<li><a href="blog-single.html">Video</a></li>
+																		<li><a href="{{url('galleries')}}">Foto</a></li>
+																		<li><a href="{{url('/')}}">Video</a></li>
 																	</ul>
 																</li>
 																<li class="icon-active"><a href="#">Kegiatan</a>
 																	<ul class="sub-menu">
-																		<li><a href="blog.html">Desa Digital</a></li>
-																		<li><a href="blog-single.html">Desa Wisata Agro</a></li>
-																		<li><a href="blog-single.html">Desa Wisata Industri</a></li>
+																		@foreach($catinfs as $category)
+																		<li><a href="{{url('kegiatan')}}/{{$category->slug}}">{{$category->title}}</a></li>
+																		@endforeach
 																	</ul>
 																</li>
 																<li class="icon-active"><a href="#">Berita</a>
@@ -150,7 +147,7 @@
 																		<li><a href="blog.html">Festival Jaipong Seri IV</a></li>
 																	</ul>
 																</li>
-																<li><a href="contact.html">Kontak Kami</a></li>
+																<li><a href="{{url('contact-us')}}">Kontak Kami</a></li>
 															</ul>
 															<!--/ End Naviagiton -->
 														</div>
@@ -168,8 +165,8 @@
 												<!--/ End Search Bar -->
 												<!-- Search Form -->
 												<div class="search-top">
-													<form action="#" class="search-form" method="get">
-														<input type="text" name="s" value="" placeholder="Search here"/>
+													<form action="{{url('search')}}" class="search-form" method="get">
+														<input type="text" id="query" name="query" value="{{ request()->input('query') }}" class="form-control" placeholder="Search" />
 														<button type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
 													</form>
 												</div>
@@ -191,25 +188,21 @@
 					<a class="btn"><i class="fa fa-close"></i></a>
 				</div>
 				<div class="single-content">
-					<h4>About Bizwheel</h4>
-					<p>The main component of a healthy environment for self esteem is that it needs be nurturing. It should provide unconditional warmth.</p>
+					<h4>Tentang Lak Galuh Pakuan</h4>
+					<p>{{$setting->about}}</p>
 					<!-- Social Icons -->
 					<ul class="social">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						@foreach($setting->social as $key=>$social)
+						<li><a href="{{$social}}"><i class="fa fa-{{$icons[$key]}}"></i></a></li>
+						@endforeach
 					</ul>
 				</div>
 				<div class="single-content">
 					<h4>Important Links</h4>   
 					<ul class="links">
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Our Services</a></li>
-						<li><a href="#">Portfolio</a></li>
-						<li><a href="#">Pricing Plan</a></li>
-						<li><a href="#">Blog & News</a></li>
-						<li><a href="#">Contact us</a></li>
+						@foreach($pages as $page)
+						<li><a href="{{url('page')}}/{{$page->slug}}">{{$page->title}}</a></li>
+						@endforeach
 					</ul>
 				</div>	
 			</div>
@@ -225,81 +218,61 @@
 			<div class="footer-top">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-3 col-md-6 col-12">
+						<div class="col-lg-4 col-md-6 col-12">
 							<!-- Footer About -->		
 							<div class="single-widget footer-about widget">	
 								<div class="logo">
 									<div class="img-logo text-center">
 										<a class="logo" href="index.html">
-											<img class="img-responsive" src="img/logo1.png" width="100px" alt="logo">
+											<img class="img-responsive" src="{{url('front/img/logo1.png')}}" width="100px" alt="logo">
 										</a>
 									</div>
 								</div>
 								<div class="footer-widget-about-description">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. </p>
+									<p>{{$setting->about}}</p>
 								</div>	
 								<div class="social">
 									<!-- Social Icons -->
 									<ul class="social-icons">
-										<li><a class="facebook" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-										<li><a class="twitter" href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-										<li><a class="linkedin" href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-										<li><a class="pinterest" href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
-										<li><a class="instagram" href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+										@foreach($setting->social as $key=>$social)
+										<li><a class="facebook" href="{{$social}}" target="_blank"><i class="fa fa-{{$icons[$key]}}"></i></a></li>
+										@endforeach
 									</ul>
 								</div>
-								<div class="button"><a href="#" class="bizwheel-btn">About Us</a></div>
 							</div>		
 							<!--/ End Footer About -->		
+						</div>
+						<div class="col-lg-3 col-md-6 col-12">
+							<!-- Footer News -->
+							<div class="single-widget footer-news widget">	
+								<h3 class="widget-title">Populer</h3>
+								<!-- Single News -->
+								@foreach($populars->take(3) as $popular)
+								<div class="single-f-news">					
+									<div class="post-thumb"><a href="#"><img src="{{url('posts')}}/{{$popular->image}}" alt="#"></a></div>
+									<div class="content">
+										<p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>{{$popular->created_at}}</time></p>
+										<h4 class="title"><a href="{{url('article')}}/{{$popular->slug}}">{{$popular->title}}</a></h4>
+									</div>
+								</div>
+								@endforeach
+								<!--/ End Single News -->
+								<!-- Single News -->
+							</div>			
+							<!--/ End Footer News -->			
 						</div>
 						<div class="col-lg-2 col-md-6 col-12">
 							<!-- Footer Links -->		
 							<div class="single-widget f-link widget">
-								<h3 class="widget-title">Company</h3>
+								<h3 class="widget-title">Link Cepat</h3>
 								<ul>
-									<li><a href="#">Tentang</a></li>
-									<li><a href="#">Gallery</a></li>
-									<li><a href="#">Berita</a></li>
-									<li><a href="#">Download</a></li>
+									@foreach($pages as $page)
+									<li><a href="{{url('page')}}/{{$page->slug}}">{{$page->title}}</a></li>
+									@endforeach
 									<li><a href="#">Lain-lain</a></li>
 								</ul>
 							</div>			
 							<!--/ End Footer Links -->			
-						</div>
-						<div class="col-lg-4 col-md-6 col-12">
-							<!-- Footer News -->
-							<div class="single-widget footer-news widget">	
-								<h3 class="widget-title">Terkini</h3>
-								<!-- Single News -->
-								<div class="single-f-news">
-									<div class="post-thumb"><a href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a></div>
-									<div class="content">
-										<p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>April 15, 2020</time></p>
-										<h4 class="title"><a href="blog-sngle.html">Ayam siap dipotong untuk digoreng</a></h4>
-									</div>
-								</div>
-								<!--/ End Single News -->
-								<!-- Single News -->
-								<div class="single-f-news">
-									<div class="post-thumb"><a href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a></div>
-									<div class="content">
-										<p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>April 10, 2020</time></p>
-										<h4 class="title"><a href="blog-sngle.html">Makan di KFC sama mantan</a></h4>
-									</div>
-								</div>
-								<!--/ End Single News -->
-								<!-- Single News -->
-								<div class="single-f-news">
-									<div class="post-thumb"><a href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a></div>
-									<div class="content">
-										<p class="post-meta"><time class="post-date"><i class="fa fa-clock-o"></i>April 10, 2020</time></p>
-										<h4 class="title"><a href="blog-sngle.html">Mandi pakai sarung</a></h4>
-									</div>
-								</div>
-								<!--/ End Single News -->
-							</div>			
-							<!--/ End Footer News -->			
 						</div>
 						<div class="col-lg-3 col-md-6 col-12">	
 							<!-- Footer Contact -->		
@@ -307,24 +280,12 @@
 								<h3 class="widget-title">Kontak</h3>
 								<p>Hubungi kami pada menu dibawah ini.</p>
 								<ul class="address-widget-list">
-									<li class="footer-mobile-number"><i class="fa fa-phone"></i>+(600) 125-4985-214</li>
-									<li class="footer-mobile-number"><i class="fa fa-envelope"></i>halloprakarsa@gmail.com</li>
-									<li class="footer-mobile-number"><i class="fa fa-map-marker"></i>Lokasi Kami</li>
+									<li class="footer-mobile-number"><i class="fa fa-phone"></i>{{$setting->phone}}</li>
+									<li class="footer-mobile-number"><i class="fa fa-envelope"></i>{{$setting->email}}</li>
+									<li class="footer-mobile-number"><i class="fa fa-map-marker"></i>{{$setting->address}}</li>
 								</ul>
 							</div>		
 							<!--/ End Footer Contact -->						
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
-							<!-- Footer Newsletter -->
-							<div class="footer-newsletter">
-								<form action="#" method="post" class="newsletter-area">
-									<input type="email" placeholder="Your email address">
-									<button type="submit">Sign Up</button>
-								</form>
-							</div>
-							<!--/ End Footer Newsletter -->
 						</div>
 					</div>
 				</div>

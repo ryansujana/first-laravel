@@ -1,6 +1,6 @@
 @extends ('frontend.master')
 @section ('title')
-<title>Gallery | DISKOMINFO</title>
+<title>Gallery | Lak Galuh</title>
 @stop
 @section ('content')
 

@@ -9,6 +9,7 @@ class frontController extends Controller
 {	
 	public function __construct(){
 		$categories = DB::table('categories')->where('status','on')->get();
+        $catinfs = DB::table('category_infs')->where('status','on')->get();
         $setting = DB::table('settings')->first();
         if($setting){
             $setting->social = explode(',', $setting->social);
@@ -27,6 +28,7 @@ class frontController extends Controller
         $sidebarBottom = DB::table('advertisements')->where('status','display')->where('location','sidebar-bottom')->orderby('aid','DESC')->first();
 		view()->share([
 			'categories' => $categories,
+            'catinfs' => $catinfs,
             'setting' => $setting,
             'icons' => $icons,
             'latestnews' => $latestnews,
@@ -52,15 +54,18 @@ class frontController extends Controller
         $sliders = DB::table('sliders')->where('status','display')->orderby('sid','DESC')->get();
         $beritas = DB::table('posts')->where('category_id','LIKE','%31%')->orderby('pid','DESC')->get();
         $aplikasis = DB::table('aplikasis')->where('status','display')->orderby('apid','DESC')->get();
+        $catinfs = DB::table('category_infs')->where('status','on')->get();
+        $populars = DB::table('posts')->orderby('views','DESC')->get();
 
-        return view ('frontend.index',['featured'=>$featured, 'general'=>$general, 'business'=>$business, 'sports'=>$sports, 'technology'=>$technology, 'health'=>$health, 'travel'=>$travel, 'entertainment'=>$entertainment, 'politics'=>$politics,'style'=>$style,'banners'=>$banners, 'sliders'=>$sliders, 'beritas'=>$beritas, 'aplikasis'=>$aplikasis]);
+        return view ('frontend.index',['featured'=>$featured, 'general'=>$general, 'business'=>$business, 'sports'=>$sports, 'technology'=>$technology, 'health'=>$health, 'travel'=>$travel, 'entertainment'=>$entertainment, 'politics'=>$politics,'style'=>$style,'banners'=>$banners, 'sliders'=>$sliders, 'beritas'=>$beritas, 'aplikasis'=>$aplikasis, 'catinfs' => $catinfs, 'populars'=>$populars]);
     }
 
     public function category($slug){
         $cat = DB::table('categories')->where('slug',$slug)->first();
-        $posts = DB::table('posts')->where('category_id','LIKE','%'.$cat->cid.'%')->orderby('pid','DESC')->get();
+        $posts = DB::table('posts')->where('category_id','LIKE','%'.$cat->cid.'%')->orderby('pid','DESC')->paginate(10);
         $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
-    	return view ('frontend.category',['posts'=>$posts,'cat'=>$cat,'latest'=>$latest]);
+        $populars = DB::table('posts')->orderby('views','DESC')->get();
+    	return view ('frontend.category',['posts'=>$posts,'cat'=>$cat,'latest'=>$latest, 'populars'=>$populars]);
     }
 
     public function article($slug){
@@ -78,7 +83,28 @@ class frontController extends Controller
     public function page($slug){
         $data = DB::table('pages')->where('slug',$slug)->first();
         $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
-        return view ('frontend.page',['data'=>$data,'latest'=>$latest]);
+        $populars = DB::table('posts')->orderby('views','DESC')->get();
+        return view ('frontend.page',['data'=>$data,'latest'=>$latest, 'populars'=>$populars]);
+    }
+
+    public function kegiatan($slug){
+        $cat = DB::table('category_infs')->where('slug',$slug)->first();
+        $desas = DB::table('desas')->where('category_id','LIKE','%'.$cat->cinid.'%')->orderby('did','DESC')->paginate(10);
+        $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        $populars = DB::table('posts')->orderby('views','DESC')->get();
+        return view ('frontend.kegiatan', ['cat'=>$cat, 'desas'=>$desas, 'latest'=>$latest, 'populars'=>$populars]);
+    }
+
+    public function desa($slug){
+        $data = DB::table('desas')->where('slug',$slug)->first();
+        $views = $data->views;
+        DB::table('desas')->where('slug',$slug)->update(['views'=>$views + 1]);
+        $category = explode(',', $data->category_id);
+        $category = $category[0];
+        $related = DB::table('posts')->where('category_id','LIKE','%'.$category.'%')->get();
+        $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        $populars = DB::table('posts')->orderby('views','DESC')->get();
+        return view ('frontend.desa',['data'=>$data, 'related'=>$related, 'latest'=>$latest,'populars'=>$populars]);
     }
 
     public function contactUs(){
@@ -88,10 +114,12 @@ class frontController extends Controller
 
     public function search(Request $request){
         $query = $request->input('query');
-        $posts = DB::table('posts')->where('title', 'LIKE', "%$query%")->orderby('pid','DESC')->get();
+        $posts = DB::table('posts')->where('title', 'LIKE', "%$query%")->orderby('pid','DESC')->paginate(10);
+        $desas = DB::table('desas')->where('title', 'LIKE', "%$query%")->orderby('did','DESC')->paginate(10);
         $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        $populars = DB::table('posts')->orderby('views','DESC')->get();
 
-        return view ('frontend.show',['posts'=>$posts, 'latest'=>$latest]);
+        return view ('frontend.show',['posts'=>$posts, 'desas'=>$desas, 'latest'=>$latest, 'populars'=>$populars]);
     }
 
     public function gallery(){
