@@ -54,10 +54,11 @@ class frontController extends Controller
         $sliders = DB::table('sliders')->where('status','display')->orderby('sid','DESC')->get();
         $beritas = DB::table('posts')->where('category_id','LIKE','%31%')->orderby('pid','DESC')->get();
         $aplikasis = DB::table('aplikasis')->where('status','display')->orderby('apid','DESC')->get();
+        $partner = DB::table('aplikasis')->where('status','media')->orderby('apid','DESC')->get();
         $catinfs = DB::table('category_infs')->where('status','on')->get();
         $populars = DB::table('posts')->orderby('views','DESC')->get();
 
-        return view ('frontend.index',['featured'=>$featured, 'general'=>$general, 'business'=>$business, 'sports'=>$sports, 'technology'=>$technology, 'health'=>$health, 'travel'=>$travel, 'entertainment'=>$entertainment, 'politics'=>$politics,'style'=>$style,'banners'=>$banners, 'sliders'=>$sliders, 'beritas'=>$beritas, 'aplikasis'=>$aplikasis, 'catinfs' => $catinfs, 'populars'=>$populars]);
+        return view ('frontend.index',['featured'=>$featured, 'general'=>$general, 'business'=>$business, 'sports'=>$sports, 'technology'=>$technology, 'health'=>$health, 'travel'=>$travel, 'entertainment'=>$entertainment, 'politics'=>$politics,'style'=>$style,'banners'=>$banners, 'sliders'=>$sliders, 'beritas'=>$beritas, 'aplikasis'=>$aplikasis, 'catinfs' => $catinfs, 'populars'=>$populars,'partner'=>$partner]);
     }
 
     public function category($slug){
@@ -123,9 +124,10 @@ class frontController extends Controller
     }
 
     public function gallery(){
-        $sliders = DB::table('sliders')->where('status','display')->orderby('sid','DESC')->get();
+        $sliders = DB::table('sliders')->orderby('sid','DESC')->get();
         $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
-        return view ('frontend.gallery',['sliders'=>$sliders,'latest'=>$latest]);
+        $populars = DB::table('posts')->orderby('views','DESC')->get();        
+        return view ('frontend.gallery',['sliders'=>$sliders,'latest'=>$latest, 'populars'=>$populars]);
     }
 
     public function aplikasi(){

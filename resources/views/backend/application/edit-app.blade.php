@@ -32,7 +32,7 @@
 						<div class="form-group content featured-image">
 							<h4>Aplication Image <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
 							@if($data->image != '')
-		              		<p><img id="output" src="{{url('public/aplikasis')}}/{{$data->image}}" style="max-width: 100%" /></p>    	
+		              		<p><img id="output" src="{{url('aplikasis')}}/{{$data->image}}" style="max-width: 100%" /></p>    	
 		              		<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
 		             		<p><label for="file" style="cursor: pointer;">Replace Image</label></p>
 		             		@else
@@ -45,9 +45,13 @@
 							<label>Stetus</label>
 							<select name="status" class="form-control">
 								<option>{{$data->status}}</option>
-								@if($data->status == 'hide')
+								@if($data->status != 'display')
 								<option>display</option>
-								@else
+								@endif
+								@if($data->status != 'media')
+								<option>media</option>
+								@endif
+								@if($data->status != 'hide')
 								<option>hide</option>
 								@endif
 							</select>

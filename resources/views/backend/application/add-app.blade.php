@@ -38,6 +38,7 @@
 							<label>Stetus</label>
 							<select name="status" class="form-control">
 								<option>display</option>
+								<option>media</option>
 								<option>hide</option>
 							</select>
 						</div>

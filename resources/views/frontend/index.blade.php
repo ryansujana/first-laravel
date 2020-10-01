@@ -230,6 +230,34 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="clients section-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
+						<div class="section-title default text-center">
+							<div class="section-top">
+								<h1><b> Media Partner</b></h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="partner-slider">
+							@foreach($partner as $app)
+							<!-- Single client -->
+							<div class="single-slider">
+								<div class="single-client">
+									<a href="{{$app->url}}" target="_blank"><img src="{{url('aplikasis')}}/{{$app->image}}" alt="#"></a>
+								</div>
+							</div>
+							@endforeach
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!--/ End Client Area -->
 		
 @stop

@@ -3825,15 +3825,26 @@ p.has-large-font-size {
 ========================================*/
 .clients{
 	padding:30px 0;
+
+
 }
 .single-client {
-    background: #fff;
+    background: #F4F9FC;
     padding: 10px 20px;
+    
+
+
+
 }
 .single-client img {
 	width: auto;
+    height: 90px;
 	display: inline-block;
 	opacity:0.7;
+    background-position: center;
+    min-height: 20px;
+    margin-top: 30px;
+
 }
 .single-client:hover{
 	cursor:pointer;
@@ -4971,6 +4982,107 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff !important;
     background: rgba(0, 0, 0, 0) linear-gradient(to right, #0091e5 0px, #00b7e5 100%) repeat scroll 0 0 !important;
 }
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #e9ecef;
+    font-size: 20px;
+}
+.carousel-indicators{
+    position: absolute;
+    padding-top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+}
+.carousel-indicators .active{
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.35);    
+    border: solid 2px #fd7e14;
+    opacity: 0.7;
+}
+.carousel-thumbnails .carousel-indicators {
+    position: static;
+    left: initial;
+    width: initial;
+    margin-right: initial;
+    margin-left: initial;
+    white-space: nowrap;
+}
+.carousel-thumbnails .carousel-indicators>li {
+    width: initial;
+    height: initial;
+    text-indent: initial;
+}
+
+.carousel-thumbnails .carousel-indicators>img {
+    vertical-align: middle;
+    border-style: none;
+}
+.content-slider {
+    display: flex;
+    justify-content: center;
+}
+.content-slider-wrap {
+    width: 84%;
+}
+.carousel-control-next {
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -1.5rem;
+    margin-right: 2.5rem;
+    font-size: 35px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transition: all .3s;
+}
+.carousel-control-prev {
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -1.5rem;
+    margin-left: 2.5rem;
+    font-size: 35px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transition: all .3s;
+}
+.carousel-control-prev-icon{
+    font-family: MobiriseIcons !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    margin-left: -0.2rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.carousel-control-next-icon {
+    font-family: MobiriseIcons !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    margin-right: -0.2rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 /*=======================
   End Mail Success CSS
 =========================*/
